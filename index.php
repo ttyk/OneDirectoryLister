@@ -13,7 +13,7 @@
 		protected $_config        = null;
 		protected $_fileTypes     = null;
 		protected $_systemMessage = null;
-
+		
 		public function __construct() {
 
 			// Set class directory constant
@@ -256,31 +256,51 @@
 			return $directoryArray;
 		}
 		public function listBreadcrumbs($directory = null) {
-			if ($directory === null) {
-				$directory = $this->_directory;
-			}
-			$dirArray = explode('/', $directory);
+			global $GO_TO_SUBFOLDERS;
+			$schema = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 			$breadcrumbsArray[] = array(
-				'link' => $this->_appURL,
+				'link' => $schema.$_SERVER["SERVER_NAME"],
 				'text' => 'Home'
 			);
+			$_directory = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);#$this->_directory;
+			$_dirArray = explode('/', $_directory);
+			array_shift( $_dirArray );
+			$last_dir = array_pop( $_dirArray );
+			$i = 0;
+			foreach ($_dirArray as $key => $dir) {
+				$i = $i+1;
+				$_breadcrumbsArray[] = array(
+					'link' => str_repeat( "../", count($_dirArray) - $i ),
+					'text' => $dir
+				);
+			}
+			if( $_breadcrumbsArray != Null ){ 
+				$breadcrumbsArray = array_merge( $breadcrumbsArray, $_breadcrumbsArray );
+			}
+			if ($directory === null) {
+				$directory = $this->_directory;			
+			}
+			$dirArray = explode('/', $directory);	
 			foreach ($dirArray as $key => $dir) {
 				if ($dir != '.') {
 					$dirPath  = null;
+					
 					for ($i = 0; $i <= $key; $i++) {
 						$dirPath = $dirPath . $dirArray[$i] . '/';
 					}
 					if(substr($dirPath, -1) == '/') {
 						$dirPath = substr($dirPath, 0, -1);
 					}
-					$link = $this->_appURL . '?dir=' . rawurlencode($dirPath);
+					$link = $this->_appURL . '?dir=' . rawurlencode($dirPath);		
 					$breadcrumbsArray[] = array(
 						'link' => $link,
 						'text' => $dir
 					);
+					
 				}
 			}
 			return $breadcrumbsArray;
+			
 		}
 		public function containsIndex($dirPath) {
 			foreach ($this->_config['index_files'] as $indexFile) {
@@ -594,18 +614,6 @@
     // Restrict access to current directory
     ini_set('open_basedir', getcwd());
 
-    // Return file hash
-    if (isset($_GET['hash'])) {
-
-        // Get file hash array and JSON encode it
-        $hashes = $lister->getFileHash($_GET['hash']);
-        $data   = json_encode($hashes);
-
-        // Return the data
-        die($data);
-
-    }
-
     if (isset($_GET['zip'])) {
 
         $dirArray = $lister->zipDirectory($_GET['zip']);
@@ -738,14 +746,10 @@
 							}
 						}
 					</style>
-				
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
 					<meta charset="utf-8">
-
 				</head>
-
 				<body>
-
 					<div id="page-navbar" class="navbar navbar-default navbar-fixed-top">
 						<div class="container">
 							<?php $breadcrumbs = $lister->listBreadcrumbs(); ?>
@@ -760,13 +764,6 @@
 								<?php endforeach; ?>
 							</p>
 							<div class="navbar-right">
-								<ul id="page-top-nav" class="nav navbar-nav">
-									<li>
-										<a href="javascript:void(0)" id="page-top-link">
-											<i class="fa fa-arrow-circle-up fa-lg"></i>
-										</a>
-									</li>
-								</ul>
 								<?php  if ($lister->isZipEnabled()): ?>
 									<ul id="page-top-download-all" class="nav navbar-nav">
 										<li>
@@ -779,7 +776,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div id="page-content" class="container">
 						<?php if($lister->getSystemMessages()): ?>
 							<?php foreach ($lister->getSystemMessages() as $message): ?>
@@ -789,7 +785,6 @@
 								</div>
 							<?php endforeach; ?>
 						<?php endif; ?>
-
 						<div id="directory-list-header">
 							<div class="row">
 								<div class="col-md-7 col-sm-6 col-xs-10">File</div>
@@ -797,9 +792,7 @@
 								<div class="col-md-3 col-sm-4 hidden-xs text-right">Last Modified</div>
 							</div>
 						</div>
-
 						<ul id="directory-listing" class="nav nav-pills nav-stacked">
-
 							<?php foreach($dirArray as $name => $fileInfo): ?>
 								<li data-name="<?php echo $name; ?>" data-href="<?php echo $fileInfo["url_path"]; ?>">
 									<a href="<?php echo $fileInfo["url_path"]; ?>" class="clearfix" data-name="<?php echo $name; ?>">
@@ -828,43 +821,33 @@
 						</ul>
 					</div>
 					<div class="footer">
-						<a href="https://github.com/ttyk/OneFileDirectoryLister">OneFileDirectoryLister</a>
+						Powered by <a href="https://github.com/ttyk/OneFileDirectoryLister">OneFileDirectoryLister</a>
 					</div>
 					<div id="file-info-modal" class="modal fade">
 						<div class="modal-dialog">
 							<div class="modal-content">
-
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title">{{modal_header}}</h4>
 								</div>
-
 								<div class="modal-body">
-
 									<table id="file-info" class="table table-bordered">
 										<tbody>
-
 											<tr>
 												<td class="table-title">MD5</td>
 												<td class="md5-hash">{{md5_sum}}</td>
 											</tr>
-
 											<tr>
 												<td class="table-title">SHA1</td>
 												<td class="sha1-hash">{{sha1_sum}}</td>
 											</tr>
-
 										</tbody>
 									</table>
-
 								</div>
-
 							</div>
 						</div>
 					</div>
-
 				</body>
-
 			</html>
 
 			
