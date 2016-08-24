@@ -720,10 +720,8 @@
 				background: #222;
 				min-height: 300px;
 				padding-left: 20px;
-				margin: 5px;
 				margin-bottom: 20px;
-				border-bottom: 1px solid #000;
-				border-top: 1px solid #000;
+        border: 1px solid #000;
 				position: relative;
 				top: 20px;
 				color: #999;
@@ -732,12 +730,10 @@
 				padding-top: 5px;
 				padding-bottom: 20px;
 			}
-			/* Markdown styles */
 			#markdown-content li{
 				padding: 3px;
 				padding-left: 0px;
 			}
-
 		</style>
 		<div class="hidden">
 			<svg xmlns="http://www.w3.org/2000/svg">
