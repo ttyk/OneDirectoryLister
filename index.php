@@ -719,13 +719,17 @@
 			#markdown-content {
 				background: #222;
 				min-height: 300px;
-				padding-left: 20px;
-				margin-bottom: 20px;
         border: 1px solid #000;
 				position: relative;
 				top: 20px;
 				color: #999;
+        padding: 20px;
 			}
+      #markdown-content body {
+        font-size: 16px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
 			#markdown-content-date{
 				padding-top: 5px;
 				padding-bottom: 20px;
@@ -734,6 +738,54 @@
 				padding: 3px;
 				padding-left: 0px;
 			}
+      #markdown-content blockquote {
+        border-left: 0.25em solid #343434;
+        padding: 0 1em;
+        margin: 0 0 16px 0;
+      }
+      #markdown-content hr {
+        border-color: #343434;
+      }
+      #markdown-content ul {
+        list-style-type: disc;
+        padding-left: 2em
+      }
+      #markdown-content ol ul {
+        list-style-type: circle;
+        padding-left: 2em;
+      }
+      #markdown-content table {
+        overflow: auto;
+        word-break: normal;
+        word-break: keep-all;
+        border-spacing: 0;
+        border-collapse: collapse;
+        border-color: #343434;
+        color: #c0c0c0;
+      }
+      #markdown-content table thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+      }
+      #markdown-content table tr {
+        background: #141414;
+        border-top: 1px solid #343434;
+      }
+      #markdown-content th, #markdown-content td {
+        padding: 6px 13px;
+        border: 1px solid #343434; 
+      }
+      #markdown-content th {
+        font-weight: bold;
+        text-align: center;
+      }
+      #markdown-content tbody {
+        vertical-align: middle;
+      }
+      #markdown-content table tr:nth-child(2n) {
+        background: #1a1a1a;
+      }
 		</style>
 		<div class="hidden">
 			<svg xmlns="http://www.w3.org/2000/svg">
