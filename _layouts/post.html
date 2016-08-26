@@ -9,6 +9,12 @@ layout: default
     {{ content }}
   </div>
 
+  {{ if page.img }}
+    <div class="post-img">
+      <img src="{{ site.baseurl }}/images/{{ page.img }}" height="{{ page.img_height }}" alt="{{ page.img_alt }}" />
+    </div>
+  {% endif }
+
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
