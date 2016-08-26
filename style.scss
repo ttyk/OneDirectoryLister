@@ -14,25 +14,43 @@
 /**************/
 
 html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 100px;
+}
+
+.wrapper-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+
+html {
   font-size: 100%;
 }
 
 body {
-	background: $white;
+	background: $primary-dark;
   font: 18px/1.4 $helvetica;
-  color: $darkGray;
+  color: $text-white;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
+  max-width: 1140px;
+  // padding: 0 10px;
   width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+  // color: $darkerGray;
+  color: $text-white;
   font-weight: bold;
 
   line-height: 1.7;
@@ -151,12 +169,13 @@ img {
 //
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
+  padding: 0 20px;
 }
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid $black;
 
   @include mobile {
     text-align: center;
@@ -273,14 +292,154 @@ nav {
 
 .wrapper-footer {
   margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  border-top: 1px solid $black;
+  background-color: $secondary-dark;
 }
 
 footer {
-  padding: 20px 0;
+  // padding: 20px 0;
   text-align: center;
+}
+
+// Custom
+.marketing {
+  position: relative;
+  overflow: hidden;
+  padding-top: 50px;
+  background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/carbon_fibre_v2.png);
+  background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png);
+  img {
+    max-width: 1140px;
+    display: block;
+    margin: 40px auto -200px auto;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.55);
+  }
+  &:after {
+    content: " ";
+    display: block;
+    height: 30px;
+    background: red;
+    box-shadow: 0 0 10px 0 $black;
+    margin-bottom: -30px;
+  }
+}
+
+.options,
+.intro,
+.features,
+.install,
+.faq,
+.contact {
+  @extend .container;
+}
+
+.desc-title {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 0;
+}
+
+%flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+%flex-child {
+  width: 32.3333333333333%;
+  padding: 15px;
+}
+
+.options {
+  @extend %flex-container;
+  padding: 40px 0 20px 0;
+  section {
+    @extend %flex-child;
+    background: $secondary-dark;
+    border: 1px solid $black;
+    box-shadow: 0 0 0 2px #333;
+    text-align: center;
+  }
+}
+
+.intro h3, .install h3 {
+  border-bottom: 1px solid $black;
+}
+
+.features {
+  background: $secondary-dark;
+  box-shadow: 0 0 8px $black inset;
+  @extend %flex-container;
+  section {
+    @extend %flex-child;
+    border-right: 1px solid $black;
+  }
+}
+
+.install-inner {
+  @extend %flex-container;
+  div {
+    width: 49%;
+    padding: 15px;
+  }
+}
+
+// Btn stuff
+.down-btn {
+  display: block;
+  margin: auto;
+  font-size: 18px;
+}
+
+.down-btn {
+  outline: 0;
+  padding: 10px 30px;
+  display: block;
+  color: #9fa8b0;
+  font-weight: bold;
+  text-shadow: 1px 1px #1f272b;
+  border: 1px solid #1c252b;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background: #232B30; /* old browsers */
+  background: -moz-linear-gradient(top, #3D4850 3%, #313d45 4%, #232B30 100%); /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#3D4850), color-stop(4%,#313d45), color-stop(100%,#232B30)); /* webkit */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3D4850', endColorstr='#232B30',GradientType=0 ); /* ie */
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* CSS3 */
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Firefox */
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2); /* Safari, Chrome */
+  cursor: pointer;
+}
+
+.down-btn:focus {
+    color: #fff;
+    background: #4C5A64; /* old browsers */
+    background: -moz-linear-gradient(top, #4C5A64 3%, #404F5A 4%, #2E3940 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4C5A64', endColorstr='#2E3940',GradientType=0 ); /* ie */
+}
+
+.down-btn:hover {
+    color: #fff;
+    background: #4C5A64; /* old browsers */
+    background: -moz-linear-gradient(top, #4C5A64 3%, #404F5A 4%, #2E3940 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#4C5A64), color-stop(4%,#404F5A), color-stop(100%,#2E3940)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4C5A64', endColorstr='#2E3940',GradientType=0 ); /* ie */
+}
+
+.down-btn:active {
+    background-position: 0 top;
+    position: relative;
+    top: 1px;
+    color: #fff;
+    padding: 6px 12px 4px;
+    background: #20282D; /* old browsers */
+    background: -moz-linear-gradient(top, #20282D 3%, #252E34 51%, #222A30 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#20282D), color-stop(51%,#252E34), color-stop(100%,#222A30)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20282D', endColorstr='#222A30',GradientType=0 ); /* ie */
+    -moz-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Firefox */
+    -webkit-box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* Safari, Chrome */
+    box-shadow: 1px 1px 1px rgba(255,255,255,0.1); /* CSS3 */
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
