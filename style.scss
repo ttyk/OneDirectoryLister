@@ -318,7 +318,6 @@ footer {
     content: " ";
     display: block;
     height: 30px;
-    background: red;
     box-shadow: 0 0 10px 0 $black;
     margin-bottom: -30px;
   }
@@ -361,7 +360,10 @@ footer {
   }
 }
 
-.intro h3, .install h3 {
+.intro h3,
+.install h3,
+.faq h3,
+.contact h4 {
   border-bottom: 1px solid $black;
 }
 

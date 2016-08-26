@@ -1,10 +1,11 @@
 ---
 layout: front
+abbr: OFDL
 ---
 <div class="marketing">
   <h2 class="desc-title">{{ site.description }}</h2>
-  <button type="button" class="down-btn">Download OFDL</button>
-  <img src="{{ site.baseurl }}/images/ofdl_screenshot.jpg" alt="OFDL screenshot">
+  <button type="button" class="down-btn">Download {{ page.abbr }}</button>
+  <img src="{{ site.baseurl }}/images/ofdl_screenshot.jpg" alt="{{ page.abbr }} screenshot">
 </div>
 <div class="options">
   <section>
@@ -17,7 +18,7 @@ layout: front
     <header>
       <h3>Show Your Support</h3>
     </header>
-    <p>Your donations help keep Directory Lister free. Show your support, donate today.</p>
+    <p>Your donations help keep {{ page.abbr }} free. Show your support, donate today.</p>
   </section>
   <section>
     <header>
@@ -28,12 +29,12 @@ layout: front
 </div>
 <article class="intro">
   <h3>Introduction</h3>
-  <p>Directory Lister is a simple PHP based script created to let you list the contents of a directory and all it's sub-directories and allow you to navigate there within. Just download and install Directory Lister to any web directory and have immediate access to all files and sub-directories under that directory.</p>
+  <p>{{ page.abbr }} is a simple PHP based script created to let you list the contents of a directory and all it's sub-directories and allow you to navigate there within. Just download and install {{ page.abbr }} to any web directory and have immediate access to all files and sub-directories under that directory.</p>
 </article>
 <div class="features">
   <section>
     <h4>SIMPLE INSTALLATION</h4>
-    <p>Our clear and simple installation instructions will help you get up and running with Directory Lister in minutes.</p>
+    <p>Our clear and simple installation instructions will help you get up and running with {{ page.abbr }} in minutes.</p>
   </section>
   <section>
     <h4>LIST ANY DIRECTORY</h4>
@@ -48,9 +49,9 @@ layout: front
   <h3>Installation</h3>
   <div class="install-inner">
     <div>
-      <p>The process to install Directory Lister is simple:</p>
+      <p>The process to install {{ site.name }} is simple:</p>
       <ol>
-        <li>Download and extract Directory Lister</li>
+        <li>Download and extract {{ page.abbr }}</li>
         <li>Copy resources/default.config.php to resources/config.php</li>
         <li>Upload index.php and the resources folder to the folder you want listed</li>
         <li>Upload additional files to the same directory as index.php</li>
@@ -58,9 +59,9 @@ layout: front
       <p>That's it! You should now see a directory listing when browsing to your directory.</p>
     </div>
     <div>
-      <p>Having trouble getting Directory Lister working?</p>
+      <p>Having trouble getting {{ page.abbr }} working?</p>
       <ul>
-        <li>Ensure you have the latest version of Directory Lister installed. The current version available is v2.6.1</li>
+        <li>Ensure you have the latest version of {{ page.abbr }} installed. The current version available is v2.6.1</li>
         <li>Verify you have PHP 5.3 or later installed. You can verify your PHP version by running: php --version</li>
       </ul>
       <p>Additional help is not available</p>
@@ -70,15 +71,15 @@ layout: front
 <section class="faq">
   <h3>Frequently Asked Questions</h3>
   <dl>
-    <dt>Can I use Directory Lister in a project I'm working on for a client / company?</dt>
-    <dd>Yes, Directory Lister is released under the MIT license. The rights granted by this licenses should be sufficient for most purposes.</dd>
-    <dt>Where can I get Directory Lister news and updates?</dt>
-    <dd>Currently, the best way to get updates is to follow @OFDL on Twitter.</dd>
+    <dt>Can I use {{ page.abbr }} in a project I'm working on for a client / company?</dt>
+    <dd>Yes, {{page.abbr }} is released under the MIT license. The rights granted by this licenses should be sufficient for most purposes.</dd>
+    <dt>Where can I get {{ page.abbr }} news and updates?</dt>
+    <dd>Currently, the best way to get updates is to follow @{{ page.abbr }} on Twitter.</dd>
   </dl>
 </section>
 <section class="contact">
   <h4>Contact Info</h4>
   <p>Contact us via</p>
-  <p>Follow Directory Lister on Twitter at @OFDL</p>
-  <p>Find a problem or bug with Directory Lister? <a href="https://github.com/ttyk/OneFileDirectoryLister">Open an issue</a> on GitHub.</p>
+  <p>Follow {{ page.abbr }} on Twitter at @{{ page.abbr }}</p>
+  <p>Find a problem or bug with {{ page.abbr }}? <a href="https://github.com/ttyk/OneFileDirectoryLister">Open an issue</a> on GitHub.</p>
 </section>
